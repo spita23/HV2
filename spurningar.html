@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birta Spurningar - PubQuiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>PubQuiz Vefur</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Forsíða</a></li>
+            <li><a href="spurningar.html">Birta Spurningar</a></li>
+            <li><a href="nyspurning.html">Búa Til Spurningar</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Birta Spurningar</h2>
+        <div id="quiz-container">
+            <button id="start-quiz">Byrja Spurningar</button>
+            <div id="question"></div>
+            <button id="prev" disabled>Til Baka</button>
+            <button id="next" disabled>Næsta</button>
+        </div>
+    </main>
+    <footer>
+        <p>Búið til af bst4@hi.is og Steinunn email</p>
+    </footer>
+    <script src="functions.js"></script>
+    <script>
+        // Hlaða spurningum og setja upp virkni fyrir spurningar.html
+        document.addEventListener('DOMContentLoaded', () => {
+            const questions = loadQuestions();
+            let currentIndex = 0;
+            const questionEl = document.getElementById('question');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+            const startBtn = document.getElementById('start-quiz');
+
+            startBtn.addEventListener('click', () => {
+                showQuestion(currentIndex);
+                startBtn.style.display = 'none';
+                prevBtn.disabled = true;
+                nextBtn.disabled = false;
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    showQuestion(currentIndex);
+                    nextBtn.disabled = false;
+                }
+                prevBtn.disabled = currentIndex === 0;
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < questions.length - 1) {
+                    currentIndex++;
+                    showQuestion(currentIndex);
+                    prevBtn.disabled = false;
+                }
+                nextBtn.disabled = currentIndex === questions.length - 1;
+            });
+
+            function showQuestion(index) {
+                const q = questions[index];
+                questionEl.innerHTML = `
+                    <p><strong>Flokkur:</strong> ${getCategory(q.category)}</p>
+                    <p><strong>Erfiðleiki:</strong> ${getDifficulty(q.difficulty)}</p>
+                    <p><strong>Spurning:</strong> ${q.question}</p>
+                    <button id="show-answer">Sýna Svar</button>
+                    <p id="answer" style="display: none;"><strong>Svar:</strong> ${q.answer}</p>
+                `;
+                const showAnswerBtn = document.getElementById('show-answer');
+                const answerEl = document.getElementById('answer');
+                showAnswerBtn.addEventListener('click', () => {
+                    answerEl.style.display = 'block';
+                    showAnswerBtn.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
