@@ -1,5 +1,8 @@
 # Hópverkefni 2
+
 ### Brynjar og Steinunn
+
+Hýst á: https://vefhopv2.netlify.app
 
 ### Keyrsla
 
