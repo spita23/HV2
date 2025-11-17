@@ -1,0 +1,26 @@
+{
+  "name": "hv2",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+      "start": "parcel *.html",
+      "dev": "parcel index.html *.html --lazy --no-cache",
+      "build": "parcel build *.html",
+      "lint": "stylelint **/*.{css,scss,sass}",
+      "format": "prettier **/*.{css,scss,sass,html} --write"
+  },
+  "repository": {
+      "type": "git",
+    "url": "git+https://github.com/spita23/HV2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spita23/HV2/issues"
+  },
+  "homepage": "https://github.com/spita23/HV2#readme",
+  "devDependencies": {
+    "parcel": "^2.16.1"
+  }
+}
