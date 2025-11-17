@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-      "start": "parcel *.html",
-      "dev": "parcel index.html *.html --lazy --no-cache",
-      "build": "parcel build *.html",
-      "lint": "stylelint **/*.{css,scss,sass}",
-      "format": "prettier **/*.{css,scss,sass,html} --write"
+    "start": "parcel *.html",
+    "dev": "parcel index.html *.html --lazy --no-cache",
+    "build": "parcel build *.html",
+    "lint": "eslint . && stylelint \"**/*.{css,scss,sass}\"",
+    "format": "prettier **/*.{css,scss,sass,html} --write"
   },
   "repository": {
-      "type": "git",
+    "type": "git",
     "url": "git+https://github.com/spita23/HV2.git"
   },
   "keywords": [],
@@ -21,6 +21,11 @@
   },
   "homepage": "https://github.com/spita23/HV2#readme",
   "devDependencies": {
-    "parcel": "^2.16.1"
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "parcel": "^2.16.1",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^39.0.1"
   }
 }

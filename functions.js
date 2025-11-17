@@ -1,3 +1,4 @@
+/* exported loadQuestions, getCategory, getDifficulty */
 function loadQuestions() {
     const stored = localStorage.getItem('questions');
     if (stored) {
