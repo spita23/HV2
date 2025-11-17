@@ -47,7 +47,6 @@ main {
 
 footer {
     background-color: #333;
-    color: white;
     text-align: center;
     padding: 1rem;
     color:#F42272;
@@ -100,10 +99,4 @@ input, select {
     padding: 0.5em;
     margin-top: 0.5em;
     background-color:#F3E0EC;
-}
-
-@media (max-width: 450px) {
-    main {
-        padding: 1em;
-    }
 }

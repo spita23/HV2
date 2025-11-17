@@ -1,3 +1,4 @@
+/* exported loadQuestions, getCategory, getDifficulty */
 // The pop-quiz follows the format of the is-trivia-questions repo.
 function loadQuestions() {
     const stored = localStorage.getItem('questions');
