@@ -18,12 +18,28 @@
         </ul>
     </nav>
     <main>
-        <h2>Birta Spurningar</h2>
-        <div id="quiz-container">
-            <button id="start-quiz">Byrja Spurningar</button>
-            <div id="question"></div>
-            <button id="prev" disabled>Til Baka</button>
-            <button id="next" disabled>Næsta</button>
+        <div id="content">
+            <h2> Spurningar</h2>
+            <div id="quiz-container">
+                <div>
+                    <button id="start-quiz">Byrja Spurningar</button>
+                    <div id="question"></div>
+                </div>
+                <div>
+                    <button id="prev" disabled>Til Baka</button>
+                    <button id="next" disabled>Næsta</button>
+                </div>
+            </div>
+            <div id="shortcuts">
+                <details>
+                    <summary>ýttu á mig fyrir flýtilykla</summary>
+                    <p>Fylla skjá: f</p>
+                    <p>Byrja spurningar: BIL</p>
+                    <p>Næsta spurning: k</p>
+                    <p>Fyrri spurning: j</p>
+                    <p>Sýna svar: s</p>
+                </details>
+            </div>
         </div>
     </main>
     <footer>
@@ -39,6 +55,17 @@
             const prevBtn = document.getElementById('prev');
             const nextBtn = document.getElementById('next');
             const startBtn = document.getElementById('start-quiz');
+            const quizContainer = document.getElementById('quiz-container'); 
+
+            function toggleFullscreen() {
+                if (!document.fullscreenElement) {
+                    quizContainer.requestFullscreen().catch(err => {
+                        alert(`Ekki tókst að fara í fullscreen: ${err.message}`);
+                    });
+                } else {
+                    document.exitFullscreen();
+                }
+            }
 
             startBtn.addEventListener('click', () => {
                 showQuestion(currentIndex);
@@ -73,14 +100,38 @@
                     <p><strong>Spurning:</strong> ${q.question}</p>
                     <button id="show-answer">Sýna Svar</button>
                     <p id="answer" style="display: none;"><strong>Svar:</strong> ${q.answer}</p>
-                `;
+                    `;
                 const showAnswerBtn = document.getElementById('show-answer');
                 const answerEl = document.getElementById('answer');
                 showAnswerBtn.addEventListener('click', () => {
                     answerEl.style.display = 'block';
                     showAnswerBtn.style.display = 'none';
                 });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key.toLowerCase() === 's') {
+                        showAnswerBtn.click();
+                    }
+                });
+
             }
+
+            document.addEventListener('keydown', (e) => {
+                switch (e.key.toLowerCase()) {
+                    case ' ': 
+                        startBtn.click();
+                        break;
+                    case 'j':
+                        if (!prevBtn.disabled) prevBtn.click();
+                        break;
+                    case 'k':
+                        if (!nextBtn.disabled) nextBtn.click();
+                        break;
+                    case 'f':
+                        toggleFullscreen();
+                        break;
+                }
+            });
         });
     </script>
 </body>
