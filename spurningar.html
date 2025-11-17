@@ -118,6 +118,7 @@
             document.addEventListener('keydown', (e) => {
                 switch (e.key.toLowerCase()) {
                     case ' ': 
+                        e.preventDefault();
                         startBtn.click();
                         break;
                     case 'j':
