@@ -1,10 +1,11 @@
 /* exported loadQuestions, getCategory, getDifficulty */
+// The pop-quiz follows the format of the is-trivia-questions repo.
 function loadQuestions() {
     const stored = localStorage.getItem('questions');
     if (stored) {
         return JSON.parse(stored);
     } else {
-        const defaultQuestions = [
+        const defaultQuestions = [ //questions from the questions.csv from is-trivia-questions
             { category: '6', subcategory: 'Tónlist', difficulty: '2', quality: '2', question: 'Hvaða hljómsveit gerði lagið "Rangur maður"', answer: 'Sólstrandargæjarnir' },
             { category: '6', subcategory: 'Tónlist', difficulty: '2', quality: '', question: 'Hvaða hljómsveit kvað "Á hverjum degi beiglan þurfti bensín, rúblunum fleygði í kerlingu sem brosti"', answer: 'Sniglabandið' },
             { category: '6', subcategory: 'Tónlist', difficulty: '2', quality: '', question: 'Hver kvað "Smíða skútu, skerpi skauta, bý til þrumuost og grauta, haltu kjafti"', answer: 'Bjartmar Guðlaugsson' },
@@ -24,7 +25,7 @@ function loadQuestions() {
         return defaultQuestions;
     }
 }
-
+// categories like in is-trivia-questions repo
 function getCategory(num) {
     const categories = {
         '1': 'Almenn kunnátta',
@@ -37,7 +38,7 @@ function getCategory(num) {
     };
     return categories[num] || 'Óþekkt';
 }
-
+// difficulties like in is-trivia-questions repo
 function getDifficulty(num) {
     const difficulties = {
         '1': 'Létt',
